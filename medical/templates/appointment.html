@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load my_tags %}
+{% block title %}Удаление{% endblock %}
+
+{% block content %}
+
+    <!-- Запись на прием -->
+    <section class="section" id="feedback">
+        <h2 class="text-center mb-4">Запись на прием</h2>
+
+        <form class="feedback-form" action="#" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-custom">Записаться</button>
+        </div>
+            </form>
+    </section>
+
+{% endblock %}

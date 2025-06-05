@@ -50,4 +50,3 @@ class ProfileUpdateView(UpdateView):
         user.updated_at = timezone.now()
         user.save()
         return super().form_valid(form)
-    

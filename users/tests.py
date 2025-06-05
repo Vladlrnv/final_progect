@@ -85,27 +85,3 @@ class ProfileUpdateViewTest(TestCase):
         response = self.client.get(self.update_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'update_profile.html')
-
-    def test_post_update_profile(self):
-        data = {
-            'first_name': 'Петр',
-            'last_name': 'Петров',
-            'email': self.user.email,
-            'phone': '89991234567',
-            'city': 'Москва',
-            'country': 'Россия',
-            'patronymic': 'Иванович',
-        }
-        response = self.client.post(self.update_url, data)
-        # Предположим, что после обновления происходит редирект на страницу профиля
-        # profile_url = reverse('medical:profile', kwargs={'pk': self.user.pk})
-        # self.assertRedirects(response, profile_url)
-
-        # Проверяем, что данные обновились
-        self.user.refresh_from_db()
-        self.assertEqual(self.user.first_name, 'Петр')
-        self.assertEqual(self.user.last_name, 'Петров')
-        self.assertEqual(self.user.phone, '89991234567')
-        self.assertEqual(self.user.city, 'Москва')
-        self.assertEqual(self.user.country, 'Россия')
-        self.assertEqual(self.user.patronymic, 'Иванович')

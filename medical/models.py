@@ -3,7 +3,6 @@ from django.utils import timezone
 from django.db import models
 
 from config import settings
-from medical.utils import get_coordinates
 
 
 # Доктора
@@ -129,9 +128,9 @@ class Appointment(models.Model):
 
     def __str__(self):
         if self.doctor:
-            return f"{self.address}, {self.doctor}, пациент: {self.user}, дата приёма: {self.appointment_date}"
+            return f"{self.doctor}, пациент: {self.user}, дата приёма: {self.appointment_date}"
         if self.services:
-            return f"{self.address}, {self.services}, пациент: {self.user}, дата приёма: {self.appointment_date}"
+            return f"{self.services}, пациент: {self.user}, дата приёма: {self.appointment_date}"
 
 
 # Результаты диагностики

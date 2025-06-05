@@ -11,7 +11,7 @@ class AppointmentForm(forms.ModelForm):
 
     class Meta:
         model = Appointment
-        fields = ["address", "doctor", "appointment_date", "services"]
+        fields = ["doctor", "appointment_date", "services"]
         exclude = ["user",]
         widgets = {
             "appointment_date": forms.DateTimeInput(
@@ -25,9 +25,6 @@ class AppointmentForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(AppointmentForm, self).__init__(*args, **kwargs)
-        self.fields["address"].widget.attrs.update(
-            {"class": "form-control", "placeholder": "Адрес клиники:"}
-        )
         self.fields["services"].widget.attrs.update(
             {"class": "form-control", "placeholder": "Услуга:"}
         )

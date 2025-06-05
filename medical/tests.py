@@ -39,7 +39,6 @@ class BaseTestCase(TestCase):
 
         self.appointment_time = timezone.now() + timedelta(days=1)
         self.appointment = Appointment.objects.create(
-            address=self.address,
             doctor=self.doctor,
             services=self.service,
             appointment_date=self.appointment_time,

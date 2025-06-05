@@ -1,9 +1,6 @@
-from .models import Doctors, Services, Information, CompanyValues, Appointment, \
-    DiagnosticResults, TestResult, Feedback
+from .models import Doctors, Services, Information, Appointment, DiagnosticResults, TestResult, Feedback
 
 from django.contrib import admin
-from .models import AddressHospital
-from .utils import get_coordinates
 
 
 # Доктора
@@ -11,7 +8,7 @@ from .utils import get_coordinates
 class DoctorsAdmin(admin.ModelAdmin):
     list_display = ("id", "first_name", "last_name", "patronymic",
                     "avatar", "specialization", "experience", "user", )
-    list_filter = ("last_name", "specialization", "reviews",)
+    list_filter = ("last_name", "specialization",)
     search_fields = ("experience", "id",)
 
 
@@ -35,7 +32,7 @@ class InformationAdmin(admin.ModelAdmin):
 # Запись на приём
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ("id", "status", "address", "doctor", "appointment_date", "services", "is_active", "user",)
+    list_display = ("id", "status", "doctor", "appointment_date", "services", "is_active", "user",)
     list_filter = ("appointment_date", "user", "services")
     search_fields = ("appointment_date", "user", "services")
 
